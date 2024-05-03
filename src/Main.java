@@ -21,13 +21,15 @@ public class Main {
 
     // Метод для внесения оценки для конкретного студента и предмета
     public static void addGrade() {
-        System.out.println("Enter student's first name:");
-        String firstName = scanner.nextLine();
-        System.out.println("Enter student's last name:");
-        String lastName = scanner.nextLine();
         System.out.println("Enter student's ID:");
         String studentID = scanner.nextLine();
-        Student student = new Student(firstName, lastName);
+
+        // Найдем студента по ID
+        Student student = findStudentByID(studentID);
+        if (student == null) {
+            System.out.println("Student not found.");
+            return;
+        }
 
         System.out.println("Enter subject (MATH, PROGRAMMING_LANGUAGES, GERMAN, ENGLISH, ALGORITHMS_AND_DATA_STRUCTURES, SOFTWARE_ENGINEERING):");
         String subjectString = scanner.nextLine();
@@ -42,15 +44,29 @@ public class Main {
         System.out.println("Grade added successfully!");
     }
 
+    private static Student findStudentByID(String studentID) {
+        for (Student student : grade.getGrades().keySet()) {
+            if (student.getStudentID().equals(studentID)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+
     // Метод для просмотра рейтинга студента
     public static void viewStudentGrades() {
-        System.out.println("Enter student's first name:");
-        String firstName = scanner.nextLine();
-        System.out.println("Enter student's last name:");
-        String lastName = scanner.nextLine();
         System.out.println("Enter student's ID:");
         String studentID = scanner.nextLine();
-        Student student = new Student(firstName, lastName);
+
+        // Найдем студента по ID
+        Student student = findStudentByID(studentID);
+        if (student == null) {
+            System.out.println("Student not found.");
+            return;
+        }
+
+        // Выводим оценки студента
         grade.printStudentGrades(student);
     }
 

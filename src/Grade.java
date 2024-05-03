@@ -21,7 +21,9 @@ public class Grade {
         studentGrades.put(subject, grade);
         grades.put(student, studentGrades);
     }
-
+    public Map<Student, Map<Subject, Double>> getGrades() {
+        return grades;
+    }
     public Double getGrade(Student student, Subject subject) {
         Map<Subject, Double> studentGrades = grades.get(student);
         return studentGrades != null ? studentGrades.get(subject) : null;
