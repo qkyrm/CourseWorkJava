@@ -38,6 +38,12 @@ public class Grade {
             System.out.println("No grades available for this student.");
         }
     }
+    public void printAllStudents() {
+        System.out.println("List of all students:");
+        for (Student student : grades.keySet()) {
+            System.out.println("Name: " + student.getFirstName() + " " + student.getLastName() + ", ID: " + student.getStudentID());
+        }
+    }
 
     public void printSubjectGrades(Subject subject) {
         System.out.println("Grades for " + subject + ":");

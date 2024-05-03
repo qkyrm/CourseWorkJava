@@ -1,16 +1,20 @@
 public class Student {
+    private static int nextID = 1;
+    private String firstName;
+    private String lastName;
+    private String studentID;
 
-        // Поля класса
-        private String firstName;
-        private String lastName;
-        private String studentID;
+    public Student(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.studentID = generateID();
+    }
 
-        // Конструктор для инициализации объекта класса Student
-        public Student(String firstName, String lastName, String studentID) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.studentID = studentID;
-        }
+    private String generateID() {
+        String id = String.format("%03d", nextID);
+        nextID++;
+        return id;
+    }
 
         // Геттеры для доступа к полям класса
         public String getFirstName() {

@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
     private static Grade grade = new Grade();
     private static Scanner scanner = new Scanner(System.in);
@@ -9,9 +12,7 @@ public class Main {
         String firstName = scanner.nextLine();
         System.out.println("Enter student's last name:");
         String lastName = scanner.nextLine();
-        System.out.println("Enter student's ID:");
-        String studentID = scanner.nextLine();
-        Student student = new Student(firstName, lastName, studentID);
+        Student student = new Student(firstName, lastName);
 
         // Добавляем студента и инициализируем его оценки
         grade.addGrade(student);
@@ -26,7 +27,7 @@ public class Main {
         String lastName = scanner.nextLine();
         System.out.println("Enter student's ID:");
         String studentID = scanner.nextLine();
-        Student student = new Student(firstName, lastName, studentID);
+        Student student = new Student(firstName, lastName);
 
         System.out.println("Enter subject (MATH, PROGRAMMING_LANGUAGES, GERMAN, ENGLISH, ALGORITHMS_AND_DATA_STRUCTURES, SOFTWARE_ENGINEERING):");
         String subjectString = scanner.nextLine();
@@ -49,7 +50,7 @@ public class Main {
         String lastName = scanner.nextLine();
         System.out.println("Enter student's ID:");
         String studentID = scanner.nextLine();
-        Student student = new Student(firstName, lastName, studentID);
+        Student student = new Student(firstName, lastName);
         grade.printStudentGrades(student);
     }
 
@@ -61,6 +62,7 @@ public class Main {
         grade.printSubjectGrades(subject);
     }
 
+
     // Основной метод
     public static void main(String[] args) {
         boolean running = true;
@@ -70,7 +72,8 @@ public class Main {
             System.out.println("2. Add grade");
             System.out.println("3. View student grades");
             System.out.println("4. View subject grades");
-            System.out.println("5. Exit");
+            System.out.println("5. View all students");
+            System.out.println("6. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline character
@@ -89,6 +92,9 @@ public class Main {
                     viewSubjectGrades();
                     break;
                 case 5:
+                    grade.printAllStudents();
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:
